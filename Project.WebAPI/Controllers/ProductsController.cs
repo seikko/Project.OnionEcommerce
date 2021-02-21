@@ -35,16 +35,23 @@ namespace Project.WebAPI.Controllers
         }
         [HttpPost("deleteProduct")]
         public IActionResult DeleteProduct(Product item)
-        {
+        {// veri durumunu Deleted'a cektık. veriyi silmedik.
             var result = _productManager.Delete(item);
             if (result.Success) return Ok(result.Success);
             return BadRequest(result);
+        }
+        [HttpPost("destroyProduct")]
+        public IActionResult DestroyProduct(Product item)
+        {//veriyi yok eder.
+            var result = _productManager.Destroy(item);
+            if (result.Success) return Ok(result.Success);
+            return BadRequest(result.Message);
         }
         [HttpPost("updateProduct")]
         public IActionResult UpdateProduct(Product item)
         {
             var result = _productManager.Update(item);
-            if (result.Success) return Ok(result);
+            if (result.Success) return Ok(result.Success);
             return BadRequest(result.Message);
         }
 

@@ -22,6 +22,7 @@ namespace Project.WebAPI
             Configuration = configuration;
         }
 
+       
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -30,7 +31,7 @@ namespace Project.WebAPI
             services.AddControllers();
             //services.AddAuthentication();
             //services.AddIdentityService();
-            services.AddDbContextService();
+            //services.AddDbContextService();
             //services.AddRepAnManServices(); // bu manuel extension metodumuz. autofac kullanmasaydýk bu sekýlde cagýrýmla da kullanabýlýrdýk.
             //MyContext c = new MyContext();// Dal Katmanýna eriþebiliyorum diye Veritabaný sýnýfýmý encapsulatýon'a sokmicagým anlamýna gelmez. Buradan eriþsem bile kullanmamam lazým.
         }

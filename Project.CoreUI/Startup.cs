@@ -24,6 +24,11 @@ namespace Project.CoreUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //services.AddAuthentication();
+            //services.AddIdentityService();
+            //services.AddDbContextService();
+            //services.AddRepAnManServices(); // bu manuel extension metodumuz. autofac kullanmasaydýk bu sekýlde cagýrýmla da kullanabýlýrdýk.
+            //MyContext c = new MyContext();// Dal Katmanýna eriþebiliyorum diye Veritabaný sýnýfýmý encapsulatýon'a sokmicagým anlamýna gelmez. Buradan eriþsem bile kullanmamam lazým.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

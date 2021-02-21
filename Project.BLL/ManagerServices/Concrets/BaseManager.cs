@@ -1,7 +1,5 @@
 ﻿using Project.BLL.Constans.ValidationMessanges;
 using Project.BLL.ManagerServices.Abstract;
-using Project.BLL.ValidationRules;
-using Project.CoreCross.Aspects.AutoFac.Validation;
 using Project.CoreCross.Utilities.Results;
 using Project.DAL.DALModel;
 using Project.DAL.Repositories.Abstract;
@@ -21,40 +19,41 @@ namespace Project.BLL.ManagerServices.Concrets
         {
             _irp = irp;
         }
-        // virtual olarak ısaretledik ezmek icin base'lerinde gorev tanımalamak ıstersek burada tanımlama yaparız her manager icin aynı gorevı yapacaktır burası
-
-     
-        public  virtual IResult Add(T item)
+        //polimorfizm ile ezmek icin virtaul keywordu koyuyoruz
+        public virtual IResult Add(T item)
         {
-            //base'e gorev tanımlamak ıstemiyor olabilirsiniz. zaten mıras aldıgım class'lardan ezıcegım icin bu gorevlerı ezmek ıstemezsem her class da 1 gorevı aynı sekılde yerıne getırsın dersem o zaman buraya 1 gorev tanımlarım ve bu gorevler ezilene kadar miras aldıkları butun classlar ıcın calısırlar 
             _irp.Add(item);
-            return new SuccessDataResult<BaseEntity>(Messanges.Added); //
+            return new SuccessDataResult<BaseEntity>(Messanges.Added);
         }
 
         public virtual IDataResult<bool> Any(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            _irp.Any(exp);
+            return new SuccessDataResult<bool>(Messanges.Added);
         }
 
-        public  virtual IResult Delete(T item)
-        {
-            throw new NotImplementedException();
+        public virtual IResult Delete(T item)
+        {//veri durumunu deleted'a cekmek
+            _irp.Delete(item);
+            return new SuccessDataResult<BaseEntity>(Messanges.Deleted);
         }
 
         public virtual IResult Destroy(T item)
         {
-            throw new NotImplementedException();
+            _irp.Destroy(item);
+            return new SuccessDataResult<BaseEntity>(Messanges.Deleted);
         }
 
         public virtual IDataResult<T> FirstOrDefault(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            _irp.FirstOrDefault(exp);
+            return new SuccessDataResult<T>(Messanges.Listed);
         }
 
         public virtual IDataResult<List<T>> GetAll()
         {
             
-            return new  SuccessDataResult<List<T>>(_irp.GetAll(),Messanges.Listed);
+            return new SuccessDataResult<List<T>>(_irp.GetAll(),Messanges.Listed);
         }
 
         public virtual IDataResult<List<AppUser>> GetByUserId(int userId)
@@ -64,7 +63,8 @@ namespace Project.BLL.ManagerServices.Concrets
 
         public virtual IDataResult<object> Select(Expression<Func<T, object>> exp)
         {
-            throw new NotImplementedException();
+            _irp.Select(exp);
+            return new SuccessDataResult<object>(Messanges.Listed);
         }
 
         public virtual IResult Update(T item)
@@ -75,7 +75,8 @@ namespace Project.BLL.ManagerServices.Concrets
 
         public virtual IDataResult<T> Where(Expression<Func<T, bool>> exp)
         {
-            throw new NotImplementedException();
+            _irp.Where(exp);
+            return new SuccessDataResult<T>(Messanges.Listed);
         }
     }
 }

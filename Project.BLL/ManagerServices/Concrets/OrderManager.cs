@@ -23,5 +23,6 @@ namespace Project.BLL.ManagerServices.Concrets
             _irp.Update(item);
             return new SuccessDataResult<Order>(Messanges.Updated);
         }
+        
     }
 }

@@ -1,0 +1,20 @@
+﻿@model AppUserVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form asp-controller="Account" asp-action="Register" method="post">
+<div>
+    <input type="text" asp-for="UserName" placeholder="UserName" />
+</div>
+<div>
+    <input type="text" asp-for="Email" placeholder="Email" />
+</div>
+<div>
+    <input type="password" asp-for="Password" placeholder="Password" />
+</div>
+<div>
+    <button class="btn btn-primary">Register</button>
+</div>
+</form>
+

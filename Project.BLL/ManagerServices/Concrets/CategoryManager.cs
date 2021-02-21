@@ -18,10 +18,24 @@ namespace Project.BLL.ManagerServices.Concrets
 
         }
         [ValidationAspect(typeof(CategoryValidator))]
-        public override IResult Delete(Category item)//veri durumunu deleted a cektık sılmedık
+        public override IResult Add(Category item)
         {
+
+            _irp.Add(item);
+            return new SuccessDataResult<Category>(Messanges.Added);
+        }
+        public override IResult Destroy(Category item)
+        {
+
             _irp.Delete(item);
             return new SuccessDataResult<Category>(Messanges.Deleted);
         }
+        public override IResult Update(Category item)
+        {
+
+            _irp.Update(item);
+            return new SuccessDataResult<Category>(Messanges.Updated);
+        }
+
     }
 }

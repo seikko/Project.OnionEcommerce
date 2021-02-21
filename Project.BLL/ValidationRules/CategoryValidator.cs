@@ -11,7 +11,7 @@ namespace Project.BLL.ValidationRules
         public CategoryValidator()
         {
             RuleFor(x => x.CategoryName).NotEmpty();
-            RuleFor(x => x.Description).MinimumLength(2);
+            //RuleFor(x => x.Description).MinimumLength(2);
             RuleFor(x => x.Description).NotEmpty();
         }
     }

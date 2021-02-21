@@ -30,7 +30,7 @@ namespace Project.DAL.ContextClasses
             base.OnModelCreating(modelBuilder);
 
         }
-        
+       
 
         //Class'larımızı tablo haline getiriyoruz.
         public DbSet<Product> Products { get; set; }

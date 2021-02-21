@@ -11,6 +11,7 @@ namespace Project.ENTITIES.Models
 
         //Relational Properties
         public virtual List<Product> Products { get; set; } // virtual ile işaretlememizin sebebi lazyLoading tetiklenebilmesi için
+
         public Category()
         {
             Products = new List<Product>();
